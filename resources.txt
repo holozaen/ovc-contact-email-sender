@@ -1,0 +1,3 @@
+https://medium.com/@ratko.korlevski/deploy-and-update-your-aws-lambda-function-with-claudiajs-2cc8dd69b11c
+https://spinscale.de/posts/2016-04-06-using-claudia-js-to-send-emails-using-aws-lambda.html
+https://github.com/claudiajs/example-projects/blob/master/web-api-custom-cors/web.js

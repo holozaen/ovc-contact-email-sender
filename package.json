@@ -7,6 +7,7 @@
   "scripts": {
     "create": "claudia create --version dev --region eu-central-1 --api-module api --policies policies --set-env-from-json .dev.json",
     "update": "claudia update --version dev --region eu-central-1 --api-module api --policies policies --set-env-from-json .dev.json",
+    "destroy": "claudia destroy --region eu-central-1",
     "release": "claudia set-version --version production",
     "tail": "node_modules/.bin/smoketail -f /aws/lambda/ovc-contact-email-sender --region eu-central-1"
   },

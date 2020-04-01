@@ -7,14 +7,18 @@ const ses = new aws.SES({
 });
 module.exports = api;
 
-api.post('/email', function (req) {
-  var msg = ''
-  for (var key in req.post) {
-      msg += key + ': ' + req.post[key] + '\n'
-  }
-  console.log(req.post)
+api.corsHeaders('Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Api-Version');
+api.corsOrigin(process.env.cors)
 
-  var email = { Source: process.env.to, Destination: { ToAddresses: [ process.env.to ] },
+api.post('/email', function (req) {
+  let msg = ''
+  for (let key in req.body) {
+    if (req.body.hasOwnProperty(key)) {
+      msg += key + ': ' + req.body[key] + '\n'
+    }
+  }
+
+  let email = { Source: process.env.to, Destination: { ToAddresses: [ process.env.to ] },
     Message: { Subject: { Data: process.env.subject }, Body: { Text: { Data: msg } } } }
   return ses.sendEmail(email).promise()
     .then(function (data) {
